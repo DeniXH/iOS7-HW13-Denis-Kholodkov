@@ -10,12 +10,17 @@ import Foundation
 
 class SettingsController: UIViewController, UITableViewDelegate {
 
-    var models = [Cell]()
+    var models = [Section]()
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.register(SettingsTableViewCell.self,
                            forCellReuseIdentifier: SettingsTableViewCell.identifier)
+        tableView.register(SwitchTableViewCell.self,
+                           forCellReuseIdentifier: SwitchTableViewCell.identifier)
+        tableView.register(SettingsTableViewCellRightNote.self,
+                           forCellReuseIdentifier: SettingsTableViewCellRightNote.identifier)
+        
         return tableView
     }()
 
@@ -36,13 +41,67 @@ class SettingsController: UIViewController, UITableViewDelegate {
     }
 
     func configurate () {
-        self.models = Array(0...100).compactMap({
-            Cell(title:"I\($0)",
-                icon: UIImage(systemName: "play"),
-                 iconBackgroundColor: .systemGray6){
+        models.append(Section(title: "General", options: [
+            .switchCell(model: CellSwitchOption(title: "Airplane mode",
+                                                icon: UIImage(systemName: "airplane"), iconBackgroundColor: .systemOrange,
+                                                handler: {
 
-            }
-        })
+                                                }, isOn: false)),
+
+            .rightNoteCell(model: RightNoteCellOption(title: "Wi-Fi",
+                                                      icon: UIImage(systemName: "wifi"),
+                                                      iconBackgroundColor: .systemBlue,
+                                                      handler: {
+
+                                                      },
+                                                      rightSideText: "Не подключено")),
+            .staticCell(model:Cell(title:"Airplane Mode",
+                                   icon: UIImage(systemName: "play"),
+                                   iconBackgroundColor: .systemGreen) {
+            }),
+            .staticCell(model:Cell(title:"iCloud",
+                                   icon: UIImage(systemName: "play"),
+                                   iconBackgroundColor: .systemBlue) {
+            })
+        ]))
+
+        models.append(Section(title: "Information", options: [
+            .staticCell(model: Cell(title:"Wi-fi",
+                                    icon: UIImage(systemName: "play"),
+                                    iconBackgroundColor: .systemRed) {
+                                    }),
+            .staticCell(model:Cell(title:"Bluetooth",
+                                   icon: UIImage(systemName: "play"),
+                                   iconBackgroundColor: .systemRed) {
+            }),
+            .staticCell(model:Cell(title:"Airplane Mode",
+                                   icon: UIImage(systemName: "play"),
+                                   iconBackgroundColor: .systemGreen) {
+            }),
+            .staticCell(model:Cell(title:"iCloud",
+                                   icon: UIImage(systemName: "play"),
+                                   iconBackgroundColor: .systemBlue) {
+            })
+        ]))
+
+        models.append(Section(title: "Apps", options: [
+            .staticCell(model: Cell(title:"Wi-fi",
+                                    icon: UIImage(systemName: "play"),
+                                    iconBackgroundColor: .systemRed) {
+                                    }),
+            .staticCell(model:Cell(title:"Bluetooth",
+                                   icon: UIImage(systemName: "play"),
+                                   iconBackgroundColor: .systemRed) {
+            }),
+            .staticCell(model:Cell(title:"Airplane Mode",
+                                   icon: UIImage(systemName: "play"),
+                                   iconBackgroundColor: .systemGreen) {
+            }),
+            .staticCell(model:Cell(title:"iCloud",
+                                   icon: UIImage(systemName: "play"),
+                                   iconBackgroundColor: .systemBlue) {
+            })
+        ]))
     }
 
     // MARK: - Setup Layout

@@ -15,6 +15,8 @@
 		92C6B1E628B7E80900479BD9 /* GroupStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C6B1E528B7E80900479BD9 /* GroupStructure.swift */; };
 		92C6B1E828B7ED0D00479BD9 /* ExtensionSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C6B1E728B7ED0D00479BD9 /* ExtensionSettingsController.swift */; };
 		92C6B20A28B825B800479BD9 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C6B20928B825B700479BD9 /* SettingsTableViewCell.swift */; };
+		92C6B20C28B8ECF800479BD9 /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C6B20B28B8ECF700479BD9 /* SwitchTableViewCell.swift */; };
+		92C6B20E28B906FE00479BD9 /* SettingsTableViewCellRightNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C6B20D28B906FE00479BD9 /* SettingsTableViewCellRightNote.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		92C6B1E528B7E80900479BD9 /* GroupStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupStructure.swift; sourceTree = "<group>"; };
 		92C6B1E728B7ED0D00479BD9 /* ExtensionSettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionSettingsController.swift; sourceTree = "<group>"; };
 		92C6B20928B825B700479BD9 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
+		92C6B20B28B8ECF700479BD9 /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
+		92C6B20D28B906FE00479BD9 /* SettingsTableViewCellRightNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCellRightNote.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +113,8 @@
 			children = (
 				92C6B1E528B7E80900479BD9 /* GroupStructure.swift */,
 				92C6B20928B825B700479BD9 /* SettingsTableViewCell.swift */,
+				92C6B20B28B8ECF700479BD9 /* SwitchTableViewCell.swift */,
+				92C6B20D28B906FE00479BD9 /* SettingsTableViewCellRightNote.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -185,10 +191,12 @@
 			files = (
 				92C6B1D028B7C05900479BD9 /* SettingsController.swift in Sources */,
 				92C6B1CC28B7C05900479BD9 /* AppDelegate.swift in Sources */,
+				92C6B20C28B8ECF800479BD9 /* SwitchTableViewCell.swift in Sources */,
 				92C6B20A28B825B800479BD9 /* SettingsTableViewCell.swift in Sources */,
 				92C6B1E628B7E80900479BD9 /* GroupStructure.swift in Sources */,
 				92C6B1E828B7ED0D00479BD9 /* ExtensionSettingsController.swift in Sources */,
 				92C6B1CE28B7C05900479BD9 /* SceneDelegate.swift in Sources */,
+				92C6B20E28B906FE00479BD9 /* SettingsTableViewCellRightNote.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

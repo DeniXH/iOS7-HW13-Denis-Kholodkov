@@ -1,5 +1,5 @@
 //
-//  SettingsTableViewCell.swift
+//  SettingsTableViewCellRightNote.swift
 //  iOS7-HW13-Denis Kholodkov
 //
 //  Created by Денис Холодков on 26.08.2022.
@@ -7,9 +7,9 @@
 
 import UIKit
 
-class SettingsTableViewCell: UITableViewCell {
+class SettingsTableViewCellRightNote: UITableViewCell {
 
-    static let identifier = "SettingTableViewCell"
+    static let identifier = "SettingsTableViewCellRightNote"
 
     private lazy var iconContainer: UIView = {
        let view = UIView()
@@ -21,7 +21,7 @@ class SettingsTableViewCell: UITableViewCell {
 
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.tintColor = #colorLiteral(red: 0.7311789393, green: 0.3477477431, blue: 1, alpha: 1)
+        imageView.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
@@ -32,13 +32,23 @@ class SettingsTableViewCell: UITableViewCell {
         return label
     }()
 
+    private lazy var rightLabel: UILabel = {
+        let rightLabel = UILabel()
+        rightLabel.numberOfLines = 1
+        rightLabel.font = .systemFont(ofSize: 15)
+        rightLabel.textColor = .lightGray
+        rightLabel.textAlignment = .right
+        return rightLabel
+    }()
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(label)
         contentView.addSubview(iconContainer)
+        contentView.addSubview(rightLabel)
         iconContainer.addSubview(iconImageView)
         contentView.clipsToBounds = true
-        accessoryType = .disclosureIndicator //  добавление стрелки справа
+        accessoryType = .disclosureIndicator
 
     }
 
@@ -53,10 +63,15 @@ class SettingsTableViewCell: UITableViewCell {
 
         let imageSize: CGFloat = size/1.5
         iconImageView.frame = CGRect(x: (size-imageSize)/2, y: (size-imageSize)/2, width: imageSize, height: imageSize)
+
         label.frame = CGRect(x: 25 + iconContainer.frame.size.width,
                              y: 0,
                              width: contentView.frame.size.width-20-iconContainer.frame.size.width,
                              height: contentView.frame.size.height)
+        rightLabel.frame = CGRect(x: -4 + iconContainer.frame.size.width,
+                                  y: 0,
+                                  width: contentView.frame.size.width-5-iconContainer.frame.size.width,
+                                  height: contentView.frame.size.height)
     }
 
     override func prepareForReuse() {
@@ -64,10 +79,12 @@ class SettingsTableViewCell: UITableViewCell {
         iconImageView.image = nil
         label.text = nil
         iconContainer.backgroundColor = nil
+        rightLabel.text = nil
     }
 
-    public func configurate(with model: Cell) {
+    public func configurate(with model: RightNoteCellOption) {
         label.text = model.title
+        rightLabel.text = model.rightSideText
         iconImageView.image = model.icon
         iconContainer.backgroundColor = model.iconBackgroundColor
     }

@@ -13,12 +13,33 @@ struct Cell {
     var icon: UIImage?
     let iconBackgroundColor: UIColor
     let handler: (() -> Void)
-   // var image: String?
-  //  var iconColor: UIColor = .systemBlue
-  //  var detail: String?
-  //  var badge: Int?
-  //  var isToggle: Bool?
-  //  var isCustomCell: Bool?
+}
+
+struct Section {
+    let title: String
+    let options: [CellType]
+}
+
+enum CellType {
+    case staticCell(model: Cell)
+    case switchCell(model: CellSwitchOption)
+    case rightNoteCell(model: RightNoteCellOption)
+}
+
+struct CellSwitchOption {
+    var title: String
+    var icon: UIImage?
+    let iconBackgroundColor: UIColor
+    let handler: (() -> Void)
+    var isOn: Bool
+}
+
+struct  RightNoteCellOption {
+    var title: String
+    var icon: UIImage?
+    let iconBackgroundColor: UIColor
+    let handler: (() -> Void)
+    var rightSideText: String
 }
 
 class GroupSructure {
