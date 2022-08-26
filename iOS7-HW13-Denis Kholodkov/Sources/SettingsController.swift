@@ -20,7 +20,8 @@ class SettingsController: UIViewController, UITableViewDelegate {
                            forCellReuseIdentifier: SwitchTableViewCell.identifier)
         tableView.register(SettingsTableViewCellRightNote.self,
                            forCellReuseIdentifier: SettingsTableViewCellRightNote.identifier)
-        
+        tableView.register(SettingsTableViewCellNotification.self,
+                           forCellReuseIdentifier: SettingsTableViewCellNotification.identifier)
         return tableView
     }()
 
@@ -42,7 +43,7 @@ class SettingsController: UIViewController, UITableViewDelegate {
 
     func configurate () {
         models.append(Section(title: "General", options: [
-            .switchCell(model: CellSwitchOption(title: "Airplane mode",
+            .switchCell(model: CellSwitchOption(title: "Авиарежим",
                                                 icon: UIImage(systemName: "airplane"), iconBackgroundColor: .systemOrange,
                                                 handler: {
 
@@ -55,40 +56,55 @@ class SettingsController: UIViewController, UITableViewDelegate {
 
                                                       },
                                                       rightSideText: "Не подключено")),
-            .staticCell(model:Cell(title:"Airplane Mode",
-                                   icon: UIImage(systemName: "play"),
+            .rightNoteCell(model: RightNoteCellOption(title: "Bluetooth",
+                                                      icon: UIImage(named: "bluetoothS"),
+                                                      iconBackgroundColor: .systemBlue,
+                                                      handler: {
+
+                                                      },
+                                                      rightSideText: "Вкл.")),
+            .staticCell(model:Cell(title: "Сотовая связь",
+                                   icon: UIImage(systemName: "antenna.radiowaves.left.and.right"),
                                    iconBackgroundColor: .systemGreen) {
             }),
-            .staticCell(model:Cell(title:"iCloud",
-                                   icon: UIImage(systemName: "play"),
-                                   iconBackgroundColor: .systemBlue) {
-            })
+            .staticCell(model:Cell(title: "Режим модема",
+                                   icon: UIImage(systemName: "personalhotspot"),
+                                   iconBackgroundColor: .systemGreen) {
+            }),
+            .switchCell(model: CellSwitchOption(title: "VPN",
+                                                icon: UIImage(named: "vpn"), iconBackgroundColor: .systemBlue,
+                                                handler: {
+
+                                                }, isOn: false)),
         ]))
 
         models.append(Section(title: "Information", options: [
-            .staticCell(model: Cell(title:"Wi-fi",
-                                    icon: UIImage(systemName: "play"),
+            .staticCell(model: Cell(title:"Уведомления",
+                                    icon: UIImage(systemName: "bell.badge.fill"),
                                     iconBackgroundColor: .systemRed) {
                                     }),
-            .staticCell(model:Cell(title:"Bluetooth",
-                                   icon: UIImage(systemName: "play"),
+            .staticCell(model:Cell(title:"Звуки, тактильные сигналы",
+                                   icon: UIImage(systemName: "speaker.wave.3.fill"),
                                    iconBackgroundColor: .systemRed) {
             }),
-            .staticCell(model:Cell(title:"Airplane Mode",
-                                   icon: UIImage(systemName: "play"),
-                                   iconBackgroundColor: .systemGreen) {
+            .staticCell(model:Cell(title:"Не беспокоить",
+                                   icon: UIImage(systemName: "moon"),
+                                   iconBackgroundColor: .systemIndigo) {
             }),
-            .staticCell(model:Cell(title:"iCloud",
-                                   icon: UIImage(systemName: "play"),
-                                   iconBackgroundColor: .systemBlue) {
+            .staticCell(model:Cell(title:"Экранное время",
+                                   icon: UIImage(systemName: "hourglass"),
+                                   iconBackgroundColor: .systemIndigo) {
             })
         ]))
 
-        models.append(Section(title: "Apps", options: [
-            .staticCell(model: Cell(title:"Wi-fi",
-                                    icon: UIImage(systemName: "play"),
-                                    iconBackgroundColor: .systemRed) {
-                                    }),
+        models.append(Section(title: "General", options: [
+            .rightNotificationCell(model: RightNotificationCell(title: "Основные",
+                                                                icon: UIImage(systemName: "gear"),
+                                                                iconBackgroundColor: .systemGray, handler: {
+
+                                                                },
+                                                                rightIcon: UIImage(systemName: "1.circle.fill"))),
+
             .staticCell(model:Cell(title:"Bluetooth",
                                    icon: UIImage(systemName: "play"),
                                    iconBackgroundColor: .systemRed) {

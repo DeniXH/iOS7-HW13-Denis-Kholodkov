@@ -49,6 +49,15 @@ extension SettingsController: UITableViewDataSource {
             }
              cell.configurate(with: model)
              return cell
+        case .rightNotificationCell(let model):
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: SettingsTableViewCellNotification.identifier,
+                for: indexPath
+            ) as? SettingsTableViewCellNotification else {
+            return UITableViewCell()
+           }
+            cell.configurate(with: model)
+            return cell
        }
     }
     
@@ -61,6 +70,8 @@ extension SettingsController: UITableViewDataSource {
         case .switchCell(let model):
             model.handler()
         case .rightNoteCell(let model):
+            model.handler()
+        case .rightNotificationCell(let model):
             model.handler()
         }
      }

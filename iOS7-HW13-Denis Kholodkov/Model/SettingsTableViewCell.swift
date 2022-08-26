@@ -21,7 +21,7 @@ class SettingsTableViewCell: UITableViewCell {
 
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.tintColor = #colorLiteral(red: 0.7311789393, green: 0.3477477431, blue: 1, alpha: 1)
+        imageView.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()

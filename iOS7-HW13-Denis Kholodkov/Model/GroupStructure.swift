@@ -24,6 +24,7 @@ enum CellType {
     case staticCell(model: Cell)
     case switchCell(model: CellSwitchOption)
     case rightNoteCell(model: RightNoteCellOption)
+    case rightNotificationCell(model: RightNotificationCell)
 }
 
 struct CellSwitchOption {
@@ -40,6 +41,14 @@ struct  RightNoteCellOption {
     let iconBackgroundColor: UIColor
     let handler: (() -> Void)
     var rightSideText: String
+}
+
+struct  RightNotificationCell {
+    var title: String
+    var icon: UIImage?
+    let iconBackgroundColor: UIColor
+    let handler: (() -> Void)
+    var rightIcon: UIImage?
 }
 
 class GroupSructure {
