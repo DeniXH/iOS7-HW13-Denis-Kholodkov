@@ -50,7 +50,3 @@ struct  RightNotificationCell {
     let handler: (() -> Void)
     var rightIcon: UIImage?
 }
-
-class GroupSructure {
-    
-}

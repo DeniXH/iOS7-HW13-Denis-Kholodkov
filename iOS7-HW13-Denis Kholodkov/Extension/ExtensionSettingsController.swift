@@ -14,7 +14,6 @@ extension SettingsController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
         return models[section].options.count
     }
 
@@ -29,41 +28,42 @@ extension SettingsController: UITableViewDataSource {
             ) as? SettingsTableViewCell else {
                 return UITableViewCell()
             }
-             cell.configurate(with: model)
-             return cell
-       case .switchCell(let model):
+            cell.configurate(with: model)
+            return cell
+        case .switchCell(let model):
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: SwitchTableViewCell.identifier,
                 for: indexPath
             ) as? SwitchTableViewCell else {
-            return UITableViewCell()
-           }
+                return UITableViewCell()
+            }
             cell.configurate(with: model)
             return cell
         case .rightNoteCell(let model):
-             guard let cell = tableView.dequeueReusableCell(
-                 withIdentifier: SettingsTableViewCellRightNote.identifier,
-                 for: indexPath
-             ) as? SettingsTableViewCellRightNote else {
-             return UITableViewCell()
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: SettingsTableViewCellRightNote.identifier,
+                for: indexPath
+            ) as? SettingsTableViewCellRightNote else {
+                return UITableViewCell()
             }
-             cell.configurate(with: model)
-             return cell
+            cell.configurate(with: model)
+            return cell
         case .rightNotificationCell(let model):
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: SettingsTableViewCellNotification.identifier,
                 for: indexPath
             ) as? SettingsTableViewCellNotification else {
-            return UITableViewCell()
-           }
+                return UITableViewCell()
+            }
             cell.configurate(with: model)
             return cell
-       }
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let type = models[indexPath.section].options[indexPath.row]
+        navigationController?.pushViewController(NextScreenController(), animated: true)
         switch type.self {
         case .staticCell(let model):
             model.handler()
@@ -74,5 +74,5 @@ extension SettingsController: UITableViewDataSource {
         case .rightNotificationCell(let model):
             model.handler()
         }
-     }
+    }
 }

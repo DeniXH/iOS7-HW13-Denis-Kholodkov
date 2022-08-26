@@ -14,8 +14,8 @@
             filePath = "iOS7-HW13-Denis Kholodkov/Sources/SettingsController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
             landmarkName = "setupLayout()"
             landmarkType = "7">
          </BreakpointContent>
@@ -30,8 +30,8 @@
             filePath = "iOS7-HW13-Denis Kholodkov/Sources/SettingsController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
             landmarkName = "setupLayout()"
             landmarkType = "7">
          </BreakpointContent>
@@ -46,8 +46,8 @@
             filePath = "iOS7-HW13-Denis Kholodkov/Model/SwitchTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
             landmarkName = "init(style:reuseIdentifier:)"
             landmarkType = "7">
          </BreakpointContent>

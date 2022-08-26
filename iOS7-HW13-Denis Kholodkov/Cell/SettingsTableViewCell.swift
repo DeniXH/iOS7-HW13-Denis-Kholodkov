@@ -1,5 +1,5 @@
 //
-//  SettingsTableViewCellRightNote.swift
+//  SettingsTableViewCell.swift
 //  iOS7-HW13-Denis Kholodkov
 //
 //  Created by Денис Холодков on 26.08.2022.
@@ -7,12 +7,14 @@
 
 import UIKit
 
-class SettingsTableViewCellRightNote: UITableViewCell {
+class SettingsTableViewCell: UITableViewCell {
 
-    static let identifier = "SettingsTableViewCellRightNote"
+    static let identifier = "SettingTableViewCell"
+
+    // MARK: - Create elements table
 
     private lazy var iconContainer: UIView = {
-       let view = UIView()
+        let view = UIView()
         view.clipsToBounds = true
         view.layer.cornerRadius = 8
         view.layer.masksToBounds = true
@@ -32,29 +34,20 @@ class SettingsTableViewCellRightNote: UITableViewCell {
         return label
     }()
 
-    private lazy var rightLabel: UILabel = {
-        let rightLabel = UILabel()
-        rightLabel.numberOfLines = 1
-        rightLabel.font = .systemFont(ofSize: 15)
-        rightLabel.textColor = .lightGray
-        rightLabel.textAlignment = .right
-        return rightLabel
-    }()
-
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(label)
         contentView.addSubview(iconContainer)
-        contentView.addSubview(rightLabel)
         iconContainer.addSubview(iconImageView)
-        contentView.clipsToBounds = true
-        accessoryType = .disclosureIndicator
+        accessoryType = .disclosureIndicator //  добавление стрелки справа
 
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    // MARK: - Setup Layout
 
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -63,15 +56,10 @@ class SettingsTableViewCellRightNote: UITableViewCell {
 
         let imageSize: CGFloat = size/1.5
         iconImageView.frame = CGRect(x: (size-imageSize)/2, y: (size-imageSize)/2, width: imageSize, height: imageSize)
-
         label.frame = CGRect(x: 25 + iconContainer.frame.size.width,
                              y: 0,
                              width: contentView.frame.size.width-20-iconContainer.frame.size.width,
                              height: contentView.frame.size.height)
-        rightLabel.frame = CGRect(x: -4 + iconContainer.frame.size.width,
-                                  y: 0,
-                                  width: contentView.frame.size.width-5-iconContainer.frame.size.width,
-                                  height: contentView.frame.size.height)
     }
 
     override func prepareForReuse() {
@@ -79,12 +67,10 @@ class SettingsTableViewCellRightNote: UITableViewCell {
         iconImageView.image = nil
         label.text = nil
         iconContainer.backgroundColor = nil
-        rightLabel.text = nil
     }
 
-    public func configurate(with model: RightNoteCellOption) {
+    public func configurate(with model: Cell) {
         label.text = model.title
-        rightLabel.text = model.rightSideText
         iconImageView.image = model.icon
         iconContainer.backgroundColor = model.iconBackgroundColor
     }
